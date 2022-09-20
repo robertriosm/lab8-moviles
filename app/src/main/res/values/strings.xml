@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">lab 8 frontend moviles</string>
+    <string name="app_name">Lab08</string>
+    <string name="character_title">Characters</string>
+    <string name="CharacterDetails_Title">Character Details</string>
+    <string name="options">Options</string>
+    <string name="sort_from_z_a">Sort from Z-A</string>
+    <string name="sort_from_a_z">Sort from A-Z</string>
+    <string name="name_char">name</string>
+    <string name="characteristics_character">characteristics</string>
+    <string name="species">Species</string>
+    <string name="status">Status</string>
+    <string name="gender">Gender</string>
+    <string name="CharactersTitle">Character</string>
+    <string name="origin">origin</string>
 </resources>
