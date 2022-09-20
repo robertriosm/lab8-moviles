@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/teal_200"
+    android:id="@+id/layoutitemrecycler_charactersfragment"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/recyclerview_size"
+
+
+    >
+    <ImageView
+        android:id="@+id/ivchar_charactersFragment"
+        android:layout_width="@dimen/default_iconsize"
+        android:layout_height="@dimen/default_iconsize"
+        android:layout_marginStart="@dimen/margin_medium_charcterfragmentiv"
+        android:layout_marginEnd="@dimen/margin_medium_charcterfragmentiv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        >
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/name_char_charactersFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/ivchar_charactersFragment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/characteristics_char_charactersFragment"
+        android:layout_marginStart="@dimen/margin_medium_charcterfragmentiv"
+        android:layout_marginEnd="@dimen/margin_medium_charcterfragmentiv"
+        android:textStyle="bold"
+        android:text="@string/name_char"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/characteristics_char_charactersFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_charcterfragmentiv"
+        android:text="@string/characteristics_character"
+        app:layout_constraintStart_toEndOf="@+id/ivchar_charactersFragment"
+        app:layout_constraintTop_toBottomOf="@id/name_char_charactersFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

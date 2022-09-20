@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/paqui/AndroidStudioProjects/lab8frontendmoviles/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/paqui/AndroidStudioProjects/lab8frontendmoviles/app/src/main/res/layout/characterdetails_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/paqui/AndroidStudioProjects/lab8frontendmoviles/app/src/main/res/layout/characters_fragment.xml" value="0.1" />
         <entry key="..\:/Users/paqui/AndroidStudioProjects/lab8frontendmoviles/app/src/main/res/layout/fragment_character.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paqui/AndroidStudioProjects/lab8frontendmoviles/app/src/main/res/layout/fragment_character_list.xml" value="0.25416666666666665" />
       </map>

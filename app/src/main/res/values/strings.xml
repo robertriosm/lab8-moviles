@@ -12,4 +12,5 @@
     <string name="gender">Gender</string>
     <string name="CharactersTitle">Character</string>
     <string name="origin">origin</string>
+    <string name="descripcion">descripcion imageview</string>
 </resources>
