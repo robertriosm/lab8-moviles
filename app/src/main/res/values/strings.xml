@@ -1,16 +1,21 @@
 <resources>
-    <string name="app_name">Lab08</string>
-    <string name="character_title">Characters</string>
-    <string name="CharacterDetails_Title">Character Details</string>
-    <string name="options">Options</string>
-    <string name="sort_from_z_a">Sort from Z-A</string>
-    <string name="sort_from_a_z">Sort from A-Z</string>
-    <string name="name_char">name</string>
-    <string name="characteristics_character">characteristics</string>
-    <string name="species">Species</string>
-    <string name="status">Status</string>
-    <string name="gender">Gender</string>
-    <string name="CharactersTitle">Character</string>
-    <string name="origin">origin</string>
-    <string name="descripcion">descripcion imageview</string>
+    <string name="app_name">lab10</string>
+    <string name="hello_blank_fragment">Hello new fragment</string>
+    <string name="species">Especies: </string>
+    <string name="status">Status: </string>
+    <string name="gender">Genero: </string>
+    <string name="origin">Origin: </string>
+    <string name="episodes">Episodios: </string>
+    <string name="characters">Characters</string>
+    <string name="character_detail">Character Detail</string>
+    <string name="error_fetching">Error 404</string>
+    <string name="error_email_password">correo o contrasena incorrecta</string>
+    <string name="login">iniciar sesion</string>
+    <string name="password">contrasena</string>
+    <string name="email">correo</string>
+    <string name="my_email">example@uvg.edu.gt</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="z_a"><![CDATA[Z -> A]]></string>
+    <string name="a_z"><![CDATA[A -> Z]]></string>
+    <string name="xd">TODO</string>
 </resources>
