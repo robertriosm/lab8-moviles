@@ -67,6 +67,7 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                 }
 
                 R.id.menu_item_logout -> {
+                    deleteDB()
                     logout()
                     true
                 }
@@ -112,6 +113,12 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                     CharacterListFragmentDirections.actionCharacterListFragmentToLoginFragment()
                 )
             }
+        }
+    }
+
+    private fun deleteDB() {
+        CoroutineScope(Dispatchers.IO).launch {
+
         }
     }
 
