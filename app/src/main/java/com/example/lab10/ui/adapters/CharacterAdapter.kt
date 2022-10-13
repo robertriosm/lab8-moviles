@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
-import com.example.lab10.R
-import com.example.lab10.datasource.model.Character
+import example.lab10.R
+import com.example.lab10.data.local.model.Character
 
 class CharacterAdapter(
     private val dataSet: MutableList<Character>,
@@ -35,7 +35,8 @@ class CharacterAdapter(
                     placeholder(R.drawable.ic_downloading)
                     transformations(CircleCropTransformation())
                     error(R.drawable.ic_error)
-                    memoryCachePolicy(CachePolicy.DISABLED)
+                    memoryCachePolicy(CachePolicy.ENABLED)
+                    diskCachePolicy(CachePolicy.READ_ONLY)
                 }
                 textName.text = name
                 textSpecies.text = species

@@ -2,18 +2,24 @@ package com.example.lab10.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lab10.R
-import com.example.lab10.datasource.api.RetrofitInstance
-import com.example.lab10.datasource.model.Character
-import com.example.lab10.datasource.model.CharactersResponse
+import androidx.room.Room
+import example.lab10.R
+import com.example.lab10.data.local.LabDatabase
+import com.example.lab10.data.local.model.Character
+import com.example.lab10.data.remote.api.RetrofitInstance
+import com.example.lab10.data.remote.dto.CharacterDto
+import com.example.lab10.data.remote.dto.CharactersResponse
+import com.example.lab10.data.remote.dto.mapToModel
 import com.example.lab10.ui.KEY_EMAIL
 import com.example.lab10.ui.adapters.CharacterAdapter
 import com.example.lab10.ui.dataStore
@@ -28,20 +34,37 @@ import retrofit2.Response
 
 class CharacterListFragment : Fragment(R.layout.fragment_character_list), CharacterAdapter.RecyclerViewCharactersEvents {
 
-    private lateinit var characters: MutableList<Character>
     private lateinit var adapter: CharacterAdapter
     private lateinit var toolbar: MaterialToolbar
     private lateinit var recyclerCharacters: RecyclerView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var database: LabDatabase
+
+    private val characters: MutableList<Character> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerCharacters = view.findViewById(R.id.recycler_characters)
         toolbar = view.findViewById(R.id.toolbar_characterList)
+        progressBar = view.findViewById(R.id.progress_characters)
+        database = Room.databaseBuilder(
+            requireContext(),
+            LabDatabase::class.java,
+            "labDatabase"
+        ).build()
 
         setToolbar()
         setListeners()
         getCharacters()
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private fun setToolbar() {
@@ -67,8 +90,12 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                 }
 
                 R.id.menu_item_logout -> {
-                    deleteDB()
                     logout()
+                    true
+                }
+
+                R.id.menu_item_sync -> {
+                    fetchCharacters(isSync = true)
                     true
                 }
                 else -> true
@@ -77,6 +104,17 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
     }
 
     private fun getCharacters() {
+        lifecycleScope.launchWhenStarted {
+            val characters = database.characterDao().getCharacters()
+            if (characters.isEmpty()) {
+                fetchCharacters(isSync = false)
+            } else {
+                showCharacters(characters, false)
+            }
+        }
+    }
+
+    private fun fetchCharacters(isSync: Boolean) {
         RetrofitInstance.api.getCharacters().enqueue(object: Callback<CharactersResponse> {
             override fun onResponse(
                 call: Call<CharactersResponse>,
@@ -84,7 +122,10 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
             ) {
                 if (response.isSuccessful) {
                     val res = response.body()?.results
-                    setupRecycler(res ?: mutableListOf())
+                    saveCharactersLocally(res ?: mutableListOf(), isSync)
+                    if (isSync) {
+                        Toast.makeText(requireContext(), getString(R.string.successful_list_update), Toast.LENGTH_LONG).show()
+                    }
                 }
             }
 
@@ -95,14 +136,32 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
         })
     }
 
-    private fun setupRecycler(characters: MutableList<Character>) {
+    private fun showCharacters(characters: List<Character>, isSync: Boolean) {
+        progressBar.visibility = View.GONE
+        recyclerCharacters.visibility = View.VISIBLE
+        this.characters.clear()
+        this.characters.addAll(characters)
 
-        this.characters = characters
+        if (!isSync) {
+            setupRecycler()
+        } else {
+            adapter.notifyDataSetChanged()
+        }
+    }
 
+    private fun setupRecycler() {
         adapter = CharacterAdapter(this.characters, this)
         recyclerCharacters.layoutManager = LinearLayoutManager(requireContext())
         recyclerCharacters.setHasFixedSize(true)
         recyclerCharacters.adapter = adapter
+    }
+
+    private fun saveCharactersLocally(characters: List<CharacterDto>, isSync: Boolean) {
+        lifecycleScope.launch {
+            val charactersToStore = characters.map { characterDto -> characterDto.mapToModel() }
+            database.characterDao().insertAll(charactersToStore)
+            showCharacters(charactersToStore, isSync)
+        }
     }
 
     private fun logout() {
@@ -116,15 +175,9 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
         }
     }
 
-    private fun deleteDB() {
-        CoroutineScope(Dispatchers.IO).launch {
-
-        }
-    }
-
     override fun onItemClicked(character: Character) {
         val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
-            character.id.toInt()
+            character.id
         )
 
         requireView().findNavController().navigate(action)

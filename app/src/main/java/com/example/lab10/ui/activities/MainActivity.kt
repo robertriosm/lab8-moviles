@@ -2,7 +2,8 @@ package com.example.lab10.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.lab10.R
+import example.lab10.R
+
 
 class MainActivity : AppCompatActivity() {
 

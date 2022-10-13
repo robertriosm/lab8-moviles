@@ -28,7 +28,7 @@
         android:layout_marginStart="@dimen/margin_medium"
         android:textSize="@dimen/font_size_medium"
         android:textColor="@color/primary_text"
-        tools:text="Numbered"
+        tools:text="Juan Durini"
         app:layout_constraintStart_toEndOf="@id/image_itemCharacter"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_medium"
         android:textColor="@color/secondary_text"
-        tools:text="Raza"
+        tools:text="Human"
         app:layout_constraintStart_toEndOf="@id/image_itemCharacter"
         app:layout_constraintTop_toBottomOf="@id/text_itemCharacter_name"
         />
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_xs"
         android:textColor="@color/secondary_text"
-        tools:text="status"
+        tools:text="Alive"
         app:layout_constraintStart_toEndOf="@id/separator_speciesStatus"
         app:layout_constraintTop_toBottomOf="@id/text_itemCharacter_name"
         />

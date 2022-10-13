@@ -1,21 +1,28 @@
 <resources>
-    <string name="app_name">lab10</string>
-    <string name="hello_blank_fragment">Hello new fragment</string>
-    <string name="species">Especies: </string>
-    <string name="status">Status: </string>
-    <string name="gender">Genero: </string>
-    <string name="origin">Origin: </string>
-    <string name="episodes">Episodios: </string>
+    <string name="app_name">Lab 10</string>
+    <string name="hello_blank_fragment">Hello Empty Fragment</string>
+    <string name="origin">Origin</string>
+    <string name="species">Species</string>
+    <string name="status">Status</string>
+    <string name="error_email_password">Email o password incorrecta</string>
+    <string name="episodes">Episodes</string>
     <string name="characters">Characters</string>
-    <string name="character_detail">Character Detail</string>
-    <string name="error_fetching">Error 404</string>
-    <string name="error_email_password">correo o contrasena incorrecta</string>
-    <string name="login">iniciar sesion</string>
-    <string name="password">contrasena</string>
-    <string name="email">correo</string>
+    <string name="name">Name</string>
+    <string name="character_detail">Character Details</string>
+    <string name="gender">Gender</string>
+    <string name="successful_update">Personaje actualizado exitosamente</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="successful_delete">Personaje eliminado exitosamente</string>
+    <string name="sync">Sync</string>
+    <string name="save">Save</string>
+    <string name="email">Email</string>
+    <string name="password">Contrasena</string>
     <string name="my_email">example@uvg.edu.gt</string>
-    <string name="cerrar_sesi_n">Cerrar sesión</string>
-    <string name="z_a"><![CDATA[Z -> A]]></string>
-    <string name="a_z"><![CDATA[A -> Z]]></string>
-    <string name="xd">TODO</string>
+    <string name="error_fetching">Error al comunicarse con API</string>
+    <string name="error_character_not_found">Error! character not found</string>
+    <string name="delete">Delete</string>
+    <string name="order_asc"><![CDATA[A => Z]]></string>
+    <string name="order_desc"><![CDATA[Z => A]]></string>
+    <string name="successful_list_update">Success! List Updated</string>
 </resources>

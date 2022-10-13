@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.lab10.R
+import example.lab10.R
 import com.example.lab10.ui.*
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
